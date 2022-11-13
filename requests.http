@@ -1,0 +1,61 @@
+### Local base url
+@baseUrl = http://localhost:8080
+@Authorization = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTY2ODMzNTUxMCwibmJmIjoxNjY4MzM1NTEwLCJqdGkiOiI0MDYwZjA4Zi1hNmU5LTRlNjMtODMxYS1mMTc2ODhhMjExYmEiLCJleHAiOjE2NjgzMzY0MTAsInR5cGUiOiJhY2Nlc3MiLCJmcmVzaCI6ZmFsc2V9.4fubP_Kko-NiCvqZmbQ4Uj0lTxMJJQsy3RboPoLL2Hg
+# @Authorization = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMiIsImlhdCI6MTY2ODMzNTg4MywibmJmIjoxNjY4MzM1ODgzLCJqdGkiOiIyNzdlZjUxZC00ODliLTQzNmQtODZiMC0xMTYzY2Y0ZGJmYTYiLCJleHAiOjE2NjgzMzY3ODMsInR5cGUiOiJhY2Nlc3MiLCJmcmVzaCI6ZmFsc2V9.BZ5XPWfla3MRinadGf9eCPWg-DP_GxRpk1oBg5YuJz4
+# @Authorization = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2ODMzNjI3NCwibmJmIjoxNjY4MzM2Mjc0LCJqdGkiOiI1OWJlMjFhOS04MTc5LTQ4YWItOGQwNC03ZDEyN2ExMDAyOGUiLCJleHAiOjE2NjgzMzcxNzQsInR5cGUiOiJhY2Nlc3MiLCJmcmVzaCI6ZmFsc2V9.o3iP_zwadzOfgcSgc0kd8_O8nlYX4KUf7fVe-MAmip8
+@RefreshToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTY2ODMzNDQ2MSwibmJmIjoxNjY4MzM0NDYxLCJqdGkiOiJkN2FiNWU3ZC0wYmJkLTQ3OTAtODczMi1kNjVlYzU5MzE2MzIiLCJleHAiOjE2NzA5MjY0NjEsInR5cGUiOiJyZWZyZXNoIn0.-2Ew0ctZ9GJNJuXwPJ2RmtRC88SHWfZxD8dN1s0HODo
+
+
+###----------------- Auth ---------------------###
+### GET all accounts
+GET {{baseUrl}}/auth/
+Authorization: Bearer {{Authorization}}
+
+### Create new user
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+    "name": "Admin",
+    "email": "admin@email.com",
+    "password": "admin",
+    "username": "admin",
+    "is_staff": true,
+    "is_active": true
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+
+### Refresh token
+GET {{baseUrl}}/auth/refresh
+Content-Type: application/json
+Authorization: Bearer {{RefreshToken}}
+
+
+###----------------- Orders ---------------------###
+### GET order by id
+GET {{baseUrl}}/orders/orders/74fdbbb8-647e-48cf-8eb0-af86034c0d5a/
+Authorization: Bearer {{Authorization}}
+
+### GET all orders for user
+GET {{baseUrl}}/orders/orders/
+Authorization: Bearer {{Authorization}}
+
+
+### Create new order
+POST {{baseUrl}}/orders/order
+Content-Type: application/json
+Authorization: Bearer {{Authorization}}
+
+{
+    "quantity": 2,
+    "pizza_size": "MEDIUM"
+}

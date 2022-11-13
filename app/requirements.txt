@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+sqlalchemy_utils
+black
+werkzeug
+fastapi_jwt_auth
